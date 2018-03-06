@@ -1,0 +1,42 @@
+{
+  "name": "anything",
+  "version": "0.1.0",
+  "description": "tiny node.js web server",
+  "main": "src/app.js",
+  "bin": {
+    "anything": "bin/anthing"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
+  },
+  "pre-commit": [
+    "fix",
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WMEGITHUB/anything.git"
+  },
+  "keywords": [
+    "static",
+    "webserver"
+  ],
+  "author": "WMEGITHUB",
+  "email": "13269403044@163.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WMEGITHUB/anything/issues"
+  },
+  "homepage": "https://github.com/WMEGITHUB/anything#readme",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.5.0",
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "handlebars": "^4.0.10",
+    "yargs": "^8.0.2"
+  }
+}
