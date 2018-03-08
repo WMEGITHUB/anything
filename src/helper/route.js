@@ -7,6 +7,7 @@ const readdir = promisify(fs.readdir);
 const mime = require('./mime');
 const config = require('./../config/defaultConf');
 const compress = require('./compress');
+const range = require('./range');
 
 const tplPath = path.join(__dirname, '../template/dir.tpl');
 const source = fs.readFileSync(tplPath);
@@ -19,7 +20,16 @@ module.exports = async function (req, res, filePath) {
       res.statusCode = 200;
       const contentType = mime(filePath);
       res.setHeader('Content-Type', contentType);
-      let rs = fs.createReadStream(filePath);
+
+      let rs;
+      const {code, start, end} = range(stat.size, req, res);
+      if (code === 200) {
+        res.statusCode = 200;
+        rs = fs.createReadStream(filePath);
+      } else {
+        res.statusCode = 206;
+        rs = fs.createReadStream(filePath, {start, end});
+      }
       if (filePath.match(config.compress)) {
         rs = compress(rs, req, res);
       }
