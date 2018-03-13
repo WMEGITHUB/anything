@@ -8,7 +8,7 @@ function refreshRes(stats, res) {
   }
 
   if (cacheControl) {
-    res.setHeader('Cache-Control', `public, max-age=${maxAge}`)
+    res.setHeader('Cache-Control', `public, max-age=${maxAge}`);
   }
 
   if (lastModified) {
@@ -23,7 +23,7 @@ function refreshRes(stats, res) {
 module.exports = function isFresh(stats, req, res) {
   refreshRes(stats, res)
 
-  const lastModified = req.header['if-modified-since'];
+  const lastModified = req.headers['if-modified-since'];
   const etag = req.headers['if-none-match'];
 
   if (!lastModified && !etag) {
