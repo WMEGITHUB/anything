@@ -1,5 +1,5 @@
 {
-  "name": "anything0.0.1_lightwindtest",
+  "name": "lightwindtest",
   "version": "0.1.0",
   "description": "tiny node.js web server",
   "main": "src/app.js",
